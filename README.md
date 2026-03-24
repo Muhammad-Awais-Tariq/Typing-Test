@@ -1,30 +1,36 @@
-# Typing-Test
-A simple typing test made in python to find the typing speed of the user.
+# Typing Test (Terminal Based)
+A terminal-based typing speed test built using Python and the curses library. This program measures the user's typing speed (WPM) in real-time and provides different difficulty levels and modes.
 
 ## Features
-- Generates random arithmetic expressions
-- Supports four operators: addition (+), subtraction (-), multiplication (*), and division (/)
-- Allows the user to choose the number of questions
-- Allows the user to define the maximum number range for generated problems
-- Gives the user up to three attempts for each question
-- Displays the correct answer if the user fails after three attempts
-- Tracks and displays the final score
-- Measures the total time taken to complete the quiz
-- Simple command line interface for user interaction
+- Real-time typing speed (WPM) calculation
+- Two modes:
+  - No Time Limit
+  - 60-Second Timer
+- Three difficulty levels:
+  - Easy
+  - Medium
+  - Hard
+- Loads random text based on selected difficulty
+- Highlights:
+  - Correct characters in green
+  - Incorrect characters in red
+- Backspace support for corrections
+- Instant feedback while typing
+- Fully interactive terminal UI using curses
 
 ## How the Program Works
-Run the program and enter the required inputs when prompted.
-
-- The program first asks the user how many questions they want to solve.
-- Then it asks for the maximum number limit (for example: 10, 100, 1000). The generated numbers in the problems will stay within this range.
-- The program generates random arithmetic expressions using two numbers and a random operator.
-- The user attempts to solve each problem.
-- The user has **three attempts** to answer each question correctly.
-- If the user answers correctly, the score increases by 1.
-- If the user fails all three attempts, the correct answer is displayed and the score decreases by 1.
-- After all questions are completed, the program displays:
-  - Total time spent solving the problems
-  - Final score
+- The program starts with a welcome screen.
+- The user selects:
+  - Mode (No time / 60 seconds)
+  - Difficulty level (Easy, Medium, Hard)
+- A random sentence is loaded from a file based on difficulty.
+- The user starts typing:
+  - WPM (Words Per Minute) is calculated in real-time.
+  - Correct and incorrect characters are highlighted.
+- The test ends when:
+  - The user completes the sentence, OR
+  - Time runs out (in 60-second mode)
+- The user can restart or exit the program.
 
 ## How to Run the Program
 1. Make sure **Python** is installed.
@@ -32,23 +38,34 @@ Run the program and enter the required inputs when prompted.
 ```bash
 python main.py
 ```
+> Note: This program uses the curses library, which works best on Linux/Mac terminals.  
+> For Windows, you need to install:
+```bash
+pip install windows-curses
+```
 
 ## File Structure
 ```bash
 project/
 │── main.py
+│── Easy.txt
+│── Medium.txt
+│── Hard.txt
 │── README.md
 ```
 
 ## Technologies Used
 - Python
-- random
-- time
+- curses (for terminal UI)
+- time (for tracking typing speed)
+- random (for selecting text)
 
 ## Notes
-- The program runs in the terminal or command prompt.
-- Division results are rounded before comparison with the user’s answer.
-- The program uses Python's `eval()` function to calculate the correct answer for generated expressions.
+- Each difficulty file (Easy.txt, Medium.txt, Hard.txt) should contain multiple lines of text.
+- The program randomly selects one line for each test.
+- WPM is calculated using the standard formula:
+  (characters typed / 5) / time in minutes
+- Press ESC anytime to exit.
 
 ## Author
 Muhammad Awais Tariq
